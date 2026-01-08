@@ -1,0 +1,26 @@
+.btn-primary {
+  display: inline-block;
+  background-color: #5BB5B4;
+  padding: 26px 70px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-secondary {
+  border: 1px solid #5BB5B4;
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #5BB5B4;
+}
+
+/* Botão responsivo */
+@media (max-width: 768px) {
+  .btn-primary {
+    font-size: 18px;
+    padding: 18px 42px;
+  }
+}
