@@ -4,4 +4,13 @@ class PagesController < ApplicationController
 
   def sobre
   end
+
+  def planos
+  end
+
+  def depoimentos
+  end
+
+  def contato
+  end
 end
