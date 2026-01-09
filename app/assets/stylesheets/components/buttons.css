@@ -24,3 +24,8 @@
     padding: 18px 42px;
   }
 }
+
+.about-content .btn-primary {
+  padding: 21px 48px;
+  font-size: 20px;
+}

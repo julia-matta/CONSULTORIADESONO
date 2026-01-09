@@ -1,5 +1,5 @@
 .banner {
-  height: 60vh;
+  height: 75vh;
   background-image: url("background.png");
   background-size: cover;
   background-position: center;
@@ -41,3 +41,4 @@
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   }
 }
+
