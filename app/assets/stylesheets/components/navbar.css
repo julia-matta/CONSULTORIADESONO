@@ -69,6 +69,7 @@
   font-size: 32px;
   color: white;
   cursor: pointer;
+  z-index: 2000;
 }
 
 /* Navbar mobile */
