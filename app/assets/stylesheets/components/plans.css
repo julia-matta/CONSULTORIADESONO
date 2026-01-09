@@ -69,6 +69,47 @@
   font-weight: 500;
   margin-bottom: 32px;
   color: #333;
+  margin: 24px 0 32px;
+  text-align: center;
+}
+
+/* PREÇO PRINCIPAL */
+.plan-price .price-main {
+  display: block;
+  font-size: 36px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* PARCELAMENTO */
+.plan-price .price-installments {
+  display: block;
+  font-size: 16px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* À VISTA */
+.plan-price .price-cash {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-top: 12px;
+}
+
+.plan-price .price-cash strong {
+  color: #5BB5B4; /* cor da sua marca */
+  font-weight: 600;
+}
+
+.plan-price .price-cash .price-region {
+  color: #555;
+  font-weight: 400;
+}
+
+/* valor em destaque */
+.plan-price .price-cash .price-highlight {
+  color: #5BB5B4; /* cor da marca */
 }
 
 .plan-price .currency {
@@ -92,6 +133,11 @@
   .plan-card.featured {
     transform: none;
   }
+
+    .plan-card:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
 }
 
 .plan-card {
@@ -104,9 +150,20 @@
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 900px) {
-  .plan-card:hover {
-    transform: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+@media (max-width: 768px) {
+  .plan-price .price-main {
+    font-size: 32px;
   }
+}
+
+
+.plan-description {
+  margin-bottom: 16px;
+}
+
+.plan-description.small {
+  margin-top: 0;
+  font-size: 14px;
+  opacity: 0.7;
 }
