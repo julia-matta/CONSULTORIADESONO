@@ -11,17 +11,37 @@
 }
 
 .navbar-center {
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .navbar-container {
   max-width: 1100px;
   margin: auto;
   padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  width: 100%;
+}
+
+.navbar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img {
+  height: 46px; /* ajuste */
+  width: auto;
+}
+
+.navbar-links-left {
+  justify-content: flex-start;
+}
+
+.navbar-links-right {
+  justify-content: flex-end;
 }
 
 .navbar-links {
@@ -80,7 +100,9 @@
   }
 
   .navbar-container {
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .navbar-links {
@@ -99,13 +121,56 @@
     font-size: 16px;
   }
 
+  .navbar-logo {
+    order: 1;
+    margin: 10px 0;
+  }
+
   .menu-toggle {
-    display: block;
+    order: 0;
+    align-self: flex-start;
   }
 
   .navbar-center {
     flex-direction: column;
     align-items: center;
   }
-  
+
+  .nav-cta {
+  font-size: 16px;
+  padding: 10px 16px;
+  }
+
+}
+
+.nav-cta-item {
+  margin-left: 10px;
+}
+
+/* botão principal */
+.nav-cta {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+
+  color: white;
+  text-decoration: none;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.30);
+}
+
+/* remove underline hover padrão do menu do botão */
+.nav-cta::after {
+  display: none !important;
 }

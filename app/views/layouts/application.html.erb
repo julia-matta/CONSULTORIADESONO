@@ -20,26 +20,50 @@
 
 <body>
   <nav class="navbar">
-    <div class="navbar-container navbar-center">
+  <div class="navbar-container navbar-center">
 
-    <!-- BOTÃO HAMBÚRGUER (aparece só no mobile via CSS) -->
+    <!-- BOTÃO HAMBÚRGUER (mobile) -->
     <button class="menu-toggle" aria-label="Abrir menu">
-    ☰
+      ☰
     </button>
 
-    <ul class="navbar-links">
-      <li><%= link_to "Início", root_path %></li>
-      <li><%= link_to "Sobre", sobre_path %></li>
-      <li><%= link_to "Planos", planos_path %></li>
-      <li><%= link_to "Depoimentos", depoimentos_path %></li>
-      <li><%= link_to "Contato", contato_path %></li>
+    <!-- ESQUERDA -->
+    <ul class="navbar-links navbar-links-left">
+      <li><%= link_to "Início", root_path, class: nav_active_class(root_path) %></li>
+      <li><%= link_to "Sobre", sobre_path, class: nav_active_class(sobre_path) %></li>
+      <li><%= link_to "Planos", planos_path, class: nav_active_class(planos_path) %></li>
     </ul>
 
-	  </div>
-  </nav>
+    <!-- LOGO CENTRAL -->
+    <div class="navbar-logo">
+      <%= link_to root_path, class: "logo-link" do %>
+        <%= image_tag "logo3.png", alt: "Consultoria do Sono", class: "logo-img" %>
+      <% end %>
+    </div>
+
+    <!-- DIREITA -->
+    <ul class="navbar-links navbar-links-right">
+      <li><%= link_to "Depoimentos", depoimentos_path, class: nav_active_class(depoimentos_path) %></li>
+      <li><%= link_to "Contato", contato_path, class: nav_active_class(contato_path) %></li>
+
+      <!-- CTA -->
+      <li class="nav-cta-item">
+        <a
+          class="nav-cta"
+          href="https://wa.me/5531991941053?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20de%20Sono."
+          target="_blank"
+          rel="noopener"
+        >
+          Agendar
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
 
 
     <%= yield %>
 
-</body>
+  </body>
 </html>
