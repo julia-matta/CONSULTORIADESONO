@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "/planos", to: "pages#planos"
   get "/depoimentos", to: "pages#depoimentos"
   get "/contato", to: "pages#contato"
+  get "duvidas", to: "pages#duvidas"
 end

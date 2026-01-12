@@ -13,4 +13,8 @@ class PagesController < ApplicationController
 
   def contato
   end
+
+  def duvidas
+  end
+
 end
