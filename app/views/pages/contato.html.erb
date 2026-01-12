@@ -1,4 +1,72 @@
-<div class="container">
-  <h1>Contato</h1>
-  <p>Entre em contato conosco.</p>
-</div>
+<section class="contact-section">
+  <div class="contact-container">
+
+    <!-- COLUNA ESQUERDA (imagem) -->
+    <div class="contact-image">
+      <%= image_tag "contato.png", alt: "Consultoria do Sono" %>
+    </div>
+
+    <!-- COLUNA DIREITA (conteúdo) -->
+    <div class="contact-content">
+      <h1>Contato</h1>
+
+      <div class="contact-card">
+        <!-- FORM -->
+        <form class="contact-form">
+          <label>
+            Nome completo
+            <input type="text" placeholder="Seu nome" />
+          </label>
+
+          <label>
+            E-mail
+            <input type="email" placeholder="seuemail@email.com" />
+          </label>
+
+          <label>
+            Mensagem
+            <textarea rows="4" placeholder="Escreva sua mensagem..."></textarea>
+          </label>
+
+          <a
+            class="contact-btn"
+            href="https://wa.me/5531991941053?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta."
+            target="_blank"
+            rel="noopener"
+          >
+            Enviar pelo WhatsApp
+          </a>
+        </form>
+
+        <!-- INFO -->
+        <div class="contact-info">
+          <div class="info-block">
+            <h3>WhatsApp</h3>
+            <p>(31) 99194-1053</p>
+          </div>
+
+          <div class="info-block">
+            <h3>Atendimento</h3>
+            <p>Online e em Belo Horizonte</p>
+          </div>
+
+          <div class="socials">
+            <a class="social-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a class="social-link" href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a class="social-link" href="https://wa.me/5531991941053" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
