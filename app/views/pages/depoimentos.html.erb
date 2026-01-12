@@ -1,4 +1,38 @@
-<div class="container">
-  <h1>Depoimentos</h1>
-  <p>Relatos de clientes satisfeitos.</p>
-</div>
+<section class="testimonials-section">
+  <div class="page-container">
+    <h1>Depoimentos</h1>
+    <p class="page-subtitle">Algumas mensagens de famílias que acompanhei</p>
+
+    <div class="cards-carousel" data-cards-carousel>
+      <button class="cards-carousel-btn prev" aria-label="Anterior" data-cards-prev>‹</button>
+
+      <div class="cards-carousel-viewport">
+        <div class="cards-carousel-track" data-cards-track>
+          <div class="testimonial-card">
+            <%= image_tag "1.png", alt: "Depoimento 1" %>
+          </div>
+
+          <div class="testimonial-card">
+            <%= image_tag "2.png", alt: "Depoimento 2" %>
+          </div>
+
+          <div class="testimonial-card">
+            <%= image_tag "3.png", alt: "Depoimento 3" %>
+          </div>
+
+          <div class="testimonial-card">
+            <%= image_tag "4.png", alt: "Depoimento 4" %>
+          </div>
+
+          <div class="testimonial-card">
+            <%= image_tag "5.png", alt: "Depoimento 5" %>
+          </div>
+        </div>
+      </div>
+
+      <button class="cards-carousel-btn next" aria-label="Próximo" data-cards-next>›</button>
+    </div>
+
+    <div class="cards-carousel-dots" data-cards-dots></div>
+  </div>
+</section>

@@ -1,0 +1,117 @@
+/* ===== DEPOIMENTOS / CARROSSEL ===== */
+.testimonials-section {
+  padding: 120px 0 80px;
+  background: #fff;
+}
+
+.cards-carousel {
+  position: relative;
+  margin-top: 28px;
+  overflow: visible; /* ✅ importante */
+}
+
+.cards-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  position: relative; /* ✅ garante camada correta */
+  z-index: 1;
+}
+
+.cards-carousel-track {
+  display: flex;
+  gap: 18px;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+/* CARD */
+.testimonial-card {
+  flex: 0 0 calc((100% - 36px) / 3);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+
+  height: 460px;
+}
+
+.testimonial-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* botões */
+.cards-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999; /* ✅ acima de tudo */
+  pointer-events: auto; /* ✅ garante clique */
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.15s ease;
+}
+
+.cards-carousel-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* ✅ não usar negativo (senão corta / não clica) */
+.cards-carousel-btn.prev { left: 10px; }
+.cards-carousel-btn.next { right: 10px; }
+
+/* dots */
+.cards-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cards-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(91, 181, 180, 0.35);
+}
+
+.cards-carousel-dot.is-active {
+  background: #5BB5B4;
+}
+
+/* Responsivo: tablet 2 cards */
+@media (max-width: 900px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% - 18px) / 2);
+    height: 420px; /* ✅ ajusta altura do card */
+  }
+}
+
+/* Responsivo: celular 1 card */
+@media (max-width: 600px) {
+  .testimonial-card {
+    flex: 0 0 100%;
+    height: 380px; /* ✅ ajusta altura do card */
+  }
+
+  .cards-carousel-btn.prev { left: 8px; }
+  .cards-carousel-btn.next { right: 8px; }
+}
