@@ -71,24 +71,24 @@
   animation-delay: 0.7s;
 }
 
-/* ==== Typewriter (no P) ==== */
 .typewriter {
-  display: block; /* importante */
+  display: block;
   overflow: hidden;
   position: relative;
 
-  /* ✅ o p já ocupa o espaço desde o início, então o botão NÃO se mexe */
+  /* não empurra o botão */
   clip-path: inset(0 100% 0 0);
 
-  /* “cursor” */
   border-right: 2px solid rgba(255, 255, 255, 0.8);
   padding-right: 8px;
 
   animation:
     typingClip 3.2s steps(70, end) forwards,
-    blink 0.75s step-end infinite;
+    blink 0.75s step-end 6,
+    hideCursor 0.01s forwards;
 
-  animation-delay: 0.6s;
+  animation-delay: 0.6s, 0.6s, 3.8s;
+  /* 3.8s = 0.6s delay + 3.2s typing */
 }
 
 @keyframes typingClip {
@@ -98,4 +98,9 @@
 
 @keyframes blink {
   50% { border-color: transparent; }
+}
+
+/* some com o cursor no final */
+@keyframes hideCursor {
+  to { border-right-color: transparent; }
 }
