@@ -24,19 +24,19 @@
   margin: 0;
 }
 
-.testimonials-carousel {
+.testimonials-carousel{
   position: relative;
-  margin-top: 26px;
+  display: flex;
+  align-items: center;
 }
 
 /* área que recorta o carrossel */
-.carousel-viewport {
+.carousel-viewport{
+  position: relative;
+  z-index: 1;
   overflow: hidden;
   width: 100%;
-  padding: 14px 60px 90px;  /* espaço embaixo p/ sombra */
-  margin-bottom: -60px;     /* remove o espaço extra visual */
-  box-sizing: border-box;
-}
+ }
 
 
 /* trilho com os cards */
@@ -141,28 +141,53 @@
   padding: 8px 0 60px;
 }
 
-/* botões carrossel */
-.carousel-btn {
+/* Botões (setas) - mantém formato “bonito” e fica por cima */
+.carousel-btn{
   position: absolute;
-  top: 55%;
+  top: 50%;
   transform: translateY(-50%);
-  z-index: 5;
+  z-index: 50;
+  pointer-events: auto;
 
+  /* Formatação (visual) */
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-
-  background: white;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.95);
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  font-size: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  /* Se você usa o caractere ‹ › como no HTML */
+  font-size: 28px;
   line-height: 1;
-  color: #5BB5B4;
+  color: #111;
 }
 
-.carousel-btn.prev { left: 0; }
-.carousel-btn.next { right: 0; }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* Hover/active */
+.carousel-btn:hover{
+  background: #fff;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.16);
+}
+
+.carousel-btn:active{
+  transform: translateY(-50%) scale(0.96);
+}
+
+/* Acessibilidade: foco no teclado */
+.carousel-btn:focus-visible{
+  outline: 3px solid rgba(0,0,0,0.18);
+  outline-offset: 3px;
+}
 
 /* Mobile: 1 card por vez */
 @media (max-width: 900px) {

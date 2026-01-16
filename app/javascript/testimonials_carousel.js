@@ -2,8 +2,13 @@ export function initTestimonialsCarousel() {
   const track = document.getElementById("testimonialsTrack");
   if (!track) return;
 
-  const prev = document.querySelector(".carousel-btn.prev");
-  const next = document.querySelector(".carousel-btn.next");
+  // evita init duplicado com Turbo (senão pode duplicar listeners)
+  if (track.dataset.carouselInit === "true") return;
+  track.dataset.carouselInit = "true";
+
+  const root = track.closest(".testimonials-carousel") || document;
+  const prev = root.querySelector(".carousel-btn.prev");
+  const next = root.querySelector(".carousel-btn.next");
 
   const cards = track.querySelectorAll(".testimonial-card");
   if (cards.length === 0) return;
@@ -11,33 +16,34 @@ export function initTestimonialsCarousel() {
   let index = 0;
   const perPage = 3;
 
+  const viewport = track.parentElement;
+
   const update = () => {
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 22;
-    const step = perPage * (cardWidth + gap);
+    const styles = getComputedStyle(viewport);
+    const step =
+      viewport.clientWidth -
+      parseFloat(styles.paddingLeft) -
+      parseFloat(styles.paddingRight);
+
     track.style.transform = `translateX(-${index * step}px)`;
   };
 
   window.addEventListener("resize", () => {
-    track.style.transform = "translateX(0px)";
     index = 0;
+    track.style.transform = "translateX(0px)";
+    requestAnimationFrame(update);
+  });
+
+  next?.addEventListener("click", () => {
+    const maxIndex = Math.ceil(cards.length / perPage) - 1;
+    if (index < maxIndex) index += 1;
     update();
   });
 
-  if (next) {
-    next.addEventListener("click", () => {
-      const maxIndex = Math.ceil(cards.length / perPage) - 1;
-      if (index < maxIndex) index += 1;
-      update();
-    });
-  }
+  prev?.addEventListener("click", () => {
+    if (index > 0) index -= 1;
+    update();
+  });
 
-  if (prev) {
-    prev.addEventListener("click", () => {
-      if (index > 0) index -= 1;
-      update();
-    });
-  }
-
-  update();
+  requestAnimationFrame(update);
 }
