@@ -21,7 +21,7 @@
 .about-cta h2 {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  color: #2f2f2f;
+  color: #5BB5B4;
   margin: 0 0 16px;
 }
 
@@ -43,7 +43,7 @@
 ============================== */
 
 .about-hero {
-  padding: 40px 0 20px; /* mais enxuto, alinhado com seu site */
+  padding: 24px 0 20px; /* mais enxuto, alinhado com seu site */
   background: #fff;
 }
 
@@ -60,6 +60,7 @@
   font-size: 18px;
   color: #777;
   margin: 0 0 24px;
+  margin-bottom: 32px;
 }
 
 
@@ -68,7 +69,7 @@
 ============================== */
 
 .about-text {
-  padding: 40px 0 30px;
+  padding: 10px 0 30px;
 }
 
 .about-grid {
@@ -94,7 +95,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #2f2f2f;
+  color: #5BB5B4;
   margin: 0 0 14px;
 }
 
@@ -113,13 +114,14 @@
 .about-steps {
   padding: 60px 0 30px;
   background: #fff;
+  margin-top: -20px;
 }
 
 .about-steps h2 {
   font-size: 32px;
   text-align: center;
   margin-bottom: 36px;
-  color: #2f2f2f;
+  color: #5BB5B4;
 }
 
 .steps {
@@ -191,7 +193,7 @@
 .profile-text h2 {
   font-size: 34px;
   font-weight: 600;
-  color: #2f2f2f;
+  color: #5BB5B4;
 }
 
 .profile-subtitle {
@@ -234,6 +236,7 @@
   padding: 18px 48px;
   font-size: 16px;
   border-radius: 50px;
+  margin-top: 24px;
 }
 
 .about-cta .btn-secondary {
