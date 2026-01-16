@@ -1,7 +1,11 @@
 /* ==============================
-   SOBRE — BASE
+   PÁGINA SOBRE — COERENTE COM O SITE
+   Paleta:
+   - Marca: #5BB5B4
+   - Texto: #777 / #555
 ============================== */
 
+/* Base geral da página Sobre */
 .about-hero,
 .about-text,
 .about-steps,
@@ -10,76 +14,80 @@
   width: 100%;
 }
 
-.about-hero h1,
+/* títulos gerais */
 .about-text h2,
 .about-steps h2,
 .about-profile h2,
 .about-cta h2 {
   font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   color: #2f2f2f;
   margin: 0 0 16px;
 }
 
+/* parágrafos */
+.about-hero p,
 .about-text p,
 .about-steps p,
 .about-profile p,
 .about-cta p {
   font-size: 18px;
   line-height: 1.8;
-  color: #555;
+  color: #777;
   margin: 0 0 16px;
 }
 
 
 /* ==============================
-   HERO
+   HERO (topo da página)
 ============================== */
 
 .about-hero {
-  padding: 70px 0 50px;
-  background: linear-gradient(180deg, rgba(91, 181, 180, 0.10), rgba(255, 255, 255, 0));
+  padding: 40px 0 20px; /* mais enxuto, alinhado com seu site */
+  background: #fff;
 }
 
 .about-hero h1 {
+  font-family: 'Poppins', sans-serif;
   font-size: 44px;
   font-weight: 600;
+  margin: 0 0 12px;
+  color: #5BB5B4; /* sua marca */
 }
 
 .about-hero-subtitle {
-  max-width: 720px;
+  max-width: 760px;
   font-size: 18px;
-  color: #666;
-  margin-bottom: 28px;
+  color: #777;
+  margin: 0 0 24px;
 }
 
 
 /* ==============================
-   SECTION: TEXTO (2 colunas)
+   BLOCO “O que é” (2 colunas)
 ============================== */
 
 .about-text {
-  padding: 60px 0;
+  padding: 40px 0 30px;
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  gap: 50px;
+  gap: 40px;
   align-items: start;
 }
 
 .about-text h2 {
-  font-size: 34px;
-  font-weight: 600;
+  font-size: 32px;
 }
 
-
-/* Box lateral */
+/* Box lateral (para quem é indicada?) */
 .about-box {
-  background: #f7fbfb;
-  border: 1px solid rgba(91, 181, 180, 0.25);
+  background: rgba(91, 181, 180, 0.10);
+  border: 1px solid rgba(91, 181, 180, 0.28);
   border-radius: 16px;
-  padding: 26px;
+  padding: 22px;
 }
 
 .about-box h3 {
@@ -87,44 +95,45 @@
   font-size: 18px;
   font-weight: 600;
   color: #2f2f2f;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
 }
 
 .about-box p {
   font-size: 16px;
   line-height: 1.7;
   margin: 0 0 10px;
+  color: #777;
 }
 
 
 /* ==============================
-   SECTION: COMO FUNCIONA (steps)
+   COMO FUNCIONA (cards/steps leves)
 ============================== */
 
 .about-steps {
-  padding: 70px 0;
+  padding: 60px 0 30px;
   background: #fff;
 }
 
 .about-steps h2 {
-  font-size: 34px;
-  font-weight: 600;
+  font-size: 32px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
+  color: #2f2f2f;
 }
 
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 22px;
 }
 
 .step {
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 18px;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  padding: 26px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   text-align: left;
 }
 
@@ -132,10 +141,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(91, 181, 180, 0.15);
+  background: rgba(91, 181, 180, 0.16);
   color: #5BB5B4;
   font-weight: 700;
   margin-bottom: 16px;
@@ -145,30 +154,30 @@
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: #2f2f2f;
 }
 
 .step p {
   font-size: 16px;
   line-height: 1.7;
-  color: #555;
   margin: 0;
+  color: #777;
 }
 
 
 /* ==============================
-   SECTION: QUEM SOU EU
+   QUEM SOU EU (foto + texto)
 ============================== */
 
 .about-profile {
-  padding: 80px 0;
+  padding: 60px 0 60px;
   background: #fff;
 }
 
 .profile-grid {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 360px 1fr;
   gap: 50px;
   align-items: center;
 }
@@ -176,18 +185,19 @@
 .profile-photo img {
   width: 100%;
   border-radius: 18px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.10);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
 }
 
 .profile-text h2 {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 600;
+  color: #2f2f2f;
 }
 
 .profile-subtitle {
-  color: #666;
+  color: #777;
   font-size: 18px;
-  margin-bottom: 22px;
+  margin: 0 0 18px;
 }
 
 
@@ -196,29 +206,54 @@
 ============================== */
 
 .about-cta {
-  padding: 70px 0;
+  padding: 55px 0;
   background: rgba(91, 181, 180, 0.12);
   text-align: center;
 }
 
 .about-cta h2 {
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .about-cta p {
-  color: #555;
-  max-width: 720px;
-  margin: 0 auto 26px;
+  max-width: 760px;
+  margin: 0 auto 24px;
+  color: #777;
 }
 
 
 /* ==============================
-   RESPONSIVO
+   BOTÕES (coerência visual)
+============================== */
+
+.about-hero .btn-primary,
+.profile-text .btn-primary {
+  display: inline-block;
+  padding: 18px 48px;
+  font-size: 16px;
+  border-radius: 50px;
+}
+
+.about-cta .btn-secondary {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 16px;
+}
+
+
+/* ==============================
+   RESPONSIVO (igual ao seu padrão)
 ============================== */
 
 @media (max-width: 900px) {
+  .about-hero {
+    padding: 30px 0 10px;
+    text-align: left;
+  }
+
   .about-hero h1 {
     font-size: 34px;
   }
@@ -248,14 +283,11 @@
     font-size: 28px;
   }
 
+  .about-hero p,
   .about-text p,
   .about-steps p,
   .about-profile p,
   .about-cta p {
     font-size: 17px;
-  }
-
-  .step {
-    text-align: left;
   }
 }
