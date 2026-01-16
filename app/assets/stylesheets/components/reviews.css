@@ -31,7 +31,8 @@
 
 /* área que recorta o carrossel */
 .carousel-viewport {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   width: 100%;
   padding: 14px 60px 28px; /* espaço para as setas */
   box-sizing: border-box;
