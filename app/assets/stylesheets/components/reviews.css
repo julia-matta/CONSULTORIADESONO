@@ -1,3 +1,29 @@
+/* ==============================
+   DEPOIMENTOS — identidade visual do site (igual ao Sobre)
+============================== */
+
+.testimonials-hero {
+  padding: 28px 0 6px;
+  background: #fff;
+  background: linear-gradient(180deg, rgba(91, 181, 180, 0.08), rgba(255,255,255,0));
+}
+
+.testimonials-hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #5BB5B4;
+}
+
+.testimonials-subtitle {
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #777;
+  margin: 0;
+}
+
 .testimonials-carousel {
   position: relative;
   margin-top: 26px;
@@ -7,7 +33,7 @@
 .carousel-viewport {
   overflow: hidden;
   width: 100%;
-  padding: 10px 60px; /* espaço para as setas */
+  padding: 14px 60px 28px; /* espaço para as setas */
   box-sizing: border-box;
 }
 
@@ -28,7 +54,7 @@
 
   background: #fff;
   border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.08);
 
   display: flex;
   flex-direction: column;
@@ -52,6 +78,7 @@
 
 /* texto truncado */
 .testimonial-quote {
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   line-height: 1.8;
   color: #666;
@@ -80,6 +107,7 @@
 }
 
 .testimonial-name {
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   color: #777;
   margin: 0;
@@ -107,6 +135,9 @@
   position: relative;
 }
 
+.testimonials-section {
+  padding: 8px 0 60px;
+}
 
 /* botões carrossel */
 .carousel-btn {
@@ -151,9 +182,52 @@
     flex: 0 0 85vw;
     scroll-snap-align: start;
   }
+
+  .testimonials-hero {
+    padding: 30px 0 10px;
+  }
+
+  .testimonials-hero h1 {
+    font-size: 34px;
+  }
+
+  .testimonials-subtitle {
+    font-size: 17px;
+  }
 }
 
 .carousel-btn {
-  z-index: 9999;
+  z-index : 10;
   pointer-events: auto;
+}
+
+.testimonials-carousel {
+  position: relative;
+  margin-top: 26px;
+}
+
+/* fade nas laterais */
+.testimonials-carousel::before,
+.testimonials-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.testimonials-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+}
+
+.testimonials-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, #fff, rgba(255,255,255,0));
+}
+
+.testimonials-section {
+  margin-top: -80px;
 }
