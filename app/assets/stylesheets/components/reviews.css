@@ -1,5 +1,13 @@
 /* ==============================
    DEPOIMENTOS — identidade visual do site (igual ao Sobre)
+   Paleta:
+   - Marca: #5BB5B4
+   - Texto: #777 / #666
+============================== */
+
+
+/* ==============================
+   HERO (topo)
 ============================== */
 
 .testimonials-hero {
@@ -24,184 +32,21 @@
   margin: 0;
 }
 
-.testimonials-carousel {
-  position: relative;
-  margin-top: 26px;
-}
 
-/* área que recorta o carrossel */
-.carousel-viewport {
-  overflow: hidden;
-  width: 100%;
-  padding: 14px 60px 90px;  /* espaço embaixo p/ sombra */
-  margin-bottom: -60px;     /* remove o espaço extra visual */
-  box-sizing: border-box;
-}
-
-
-/* trilho com os cards */
-.carousel-track {
-  display: flex;
-  gap: 22px;
-  transition: transform 0.35s ease;
-  will-change: transform;
-}
-
-/* CARD PADRÃO (maior e igual) */
-.testimonial-card {
-  flex: 0 0 calc((100% - (22px * 2)) / 3); /* 3 cards exatos */
-  min-height: 300px;
-  border-radius: 18px;
-  padding: 28px;
-
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.08);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  position: relative;
-}
-
-/* aspas */
-.testimonial-card::before {
-  content: "“";
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  font-size: 64px;
-  line-height: 1;
-  color: rgba(91, 181, 180, 0.22);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-/* texto truncado */
-.testimonial-quote {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #666;
-  margin: 0 0 14px;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ver mais */
-.testimonial-more {
-  background: none;
-  border: none;
-  padding: 0;
-  text-align: left;
-
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #5BB5B4;
-
-  cursor: pointer;
-  margin-bottom: 18px;
-}
-
-.testimonial-name {
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  color: #777;
-  margin: 0;
-  font-weight: 500;
-}
-
-.testimonial-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-
-  display: none;             /* isso aqui é OBRIGATÓRIO */
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
-  z-index: 2000;
-}
-
-.testimonial-modal.open {
-  display: flex;
-}
-
-.testimonial-modal-content {
-  position: relative;
-}
+/* ==============================
+   SECTION (conteúdo)
+============================== */
 
 .testimonials-section {
+  width: 100%;
   padding: 8px 0 60px;
+  margin-top: -80px; /* aproxima do hero */
 }
 
-/* botões carrossel */
-.carousel-btn {
-  position: absolute;
-  top: 55%;
-  transform: translateY(-50%);
-  z-index: 5;
 
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-
-  background: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  font-size: 26px;
-  line-height: 1;
-  color: #5BB5B4;
-}
-
-.carousel-btn.prev { left: 0; }
-.carousel-btn.next { right: 0; }
-
-/* Mobile: 1 card por vez */
-@media (max-width: 900px) {
-  .carousel-btn {
-    display: none;
-  }
-
-  .carousel-viewport {
-    padding: 10px 0;
-  }
-
-  .carousel-track {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .testimonial-card {
-    flex: 0 0 85vw;
-    scroll-snap-align: start;
-  }
-
-  .testimonials-hero {
-    padding: 30px 0 10px;
-  }
-
-  .testimonials-hero h1 {
-    font-size: 34px;
-  }
-
-  .testimonials-subtitle {
-    font-size: 17px;
-  }
-}
-
-.carousel-btn {
-  z-index : 10;
-  pointer-events: auto;
-}
+/* ==============================
+   CARROSSEL
+============================== */
 
 .testimonials-carousel {
   position: relative;
@@ -230,6 +75,230 @@
   background: linear-gradient(to left, #fff, rgba(255,255,255,0));
 }
 
-.testimonials-section {
-  margin-top: -80px;
+/* viewport (recorta carrossel, mas sem cortar sombras) */
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 14px 60px 90px;  /* espaço embaixo para sombra */
+  margin-bottom: -60px;     /* remove o espaço extra visual */
+  box-sizing: border-box;
+}
+
+/* trilho com os cards */
+.carousel-track {
+  display: flex;
+  gap: 22px;
+  transition: transform 0.35s ease;
+  will-change: transform;
+  padding: 12px 0; /* respiro p/ hover não “chacoalhar” */
+}
+
+
+/* ==============================
+   CARDS
+============================== */
+
+.testimonial-card {
+  flex: 0 0 calc((100% - (22px * 2)) / 3); /* 3 cards exatos */
+  min-height: 320px;
+  border-radius: 18px;
+  padding: 28px;
+
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ✅ remove o buraco */
+
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.10);
+}
+
+/* aspas */
+.testimonial-card::before {
+  content: "“";
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-size: 64px;
+  line-height: 1;
+  color: rgba(91, 181, 180, 0.22);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+/* texto truncado */
+.testimonial-quote {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  margin: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* rodapé do card */
+.testimonial-footer {
+  margin-top: auto;          /* empurra o footer para o final do card */
+  padding-top: 12px;         /* espaço controlado */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ver mais */
+.testimonial-more {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5BB5B4;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.testimonial-more::after {
+  content: "→";
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.testimonial-more:hover {
+  opacity: 0.85;
+}
+
+.testimonial-more:hover::after {
+  transform: translateX(4px);
+}
+
+.testimonial-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #777;
+  font-weight: 500;
+}
+
+/* zera margens */
+.testimonial-more,
+.testimonial-name {
+  margin: 0;
+}
+
+
+/* ==============================
+   BOTÕES DO CARROSSEL
+============================== */
+
+.carousel-btn {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  font-size: 26px;
+  line-height: 1;
+  color: #5BB5B4;
+
+  pointer-events: auto;
+}
+
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
+
+
+/* ==============================
+   MODAL
+============================== */
+
+.testimonial-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  z-index: 2000;
+}
+
+.testimonial-modal.open {
+  display: flex;
+}
+
+.testimonial-modal-content {
+  position: relative;
+}
+
+
+/* ==============================
+   RESPONSIVO
+============================== */
+
+@media (max-width: 900px) {
+  .carousel-btn {
+    display: none;
+  }
+
+  .carousel-viewport {
+    padding: 10px 0 70px;
+    margin-bottom: -50px;
+  }
+
+  .carousel-track {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 14px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+  }
+
+  .testimonials-hero {
+    padding: 30px 0 10px;
+  }
+
+  .testimonials-hero h1 {
+    font-size: 34px;
+  }
+
+  .testimonials-subtitle {
+    font-size: 17px;
+  }
+
+  .testimonials-section {
+    margin-top: -40px;
+  }
 }
