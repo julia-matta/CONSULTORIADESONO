@@ -1,15 +1,8 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
-import "./cards_carousel"
+
+import { initTestimonialsCarousel } from "./testimonials_carousel"
 
 document.addEventListener("turbo:load", () => {
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".navbar-links");
-
-  if (toggle && menu) {
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("open");
-    });
-  }
+  initTestimonialsCarousel();
 });

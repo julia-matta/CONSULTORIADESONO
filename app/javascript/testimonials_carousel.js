@@ -1,7 +1,4 @@
-import "@hotwired/turbo-rails"
-import "controllers"
-
-document.addEventListener("turbo:load", () => {
+export function initTestimonialsCarousel() {
   const track = document.getElementById("testimonialsTrack");
   if (!track) return;
 
@@ -16,12 +13,11 @@ document.addEventListener("turbo:load", () => {
 
   const update = () => {
     const cardWidth = cards[0].offsetWidth;
-    const gap = 22; // igual ao CSS
+    const gap = 22;
     const step = perPage * (cardWidth + gap);
     track.style.transform = `translateX(-${index * step}px)`;
   };
 
-  // Garantir que recalcula com resize
   window.addEventListener("resize", () => {
     track.style.transform = "translateX(0px)";
     index = 0;
@@ -44,4 +40,4 @@ document.addEventListener("turbo:load", () => {
   }
 
   update();
-});
+}

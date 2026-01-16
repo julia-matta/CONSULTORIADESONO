@@ -1,38 +1,92 @@
 <section class="testimonials-section">
-  <div class="page-container">
-    <h1>Depoimentos</h1>
-    <p class="page-subtitle">Algumas mensagens de famílias que acompanhei</p>
+  <div class="container">
 
-    <div class="cards-carousel" data-cards-carousel>
-      <button class="cards-carousel-btn prev" aria-label="Anterior" data-cards-prev>‹</button>
+    <div class="testimonials-header">
+      <h1>Depoimentos</h1>
+      <p>Histórias reais de famílias que encontraram estrutura, leveza e noites mais tranquilas.</p>
+    </div>
 
-      <div class="cards-carousel-viewport">
-        <div class="cards-carousel-track" data-cards-track>
-          <div class="testimonial-card">
-            <%= image_tag "1.png", alt: "Depoimento 1" %>
-          </div>
+    <div class="testimonials-carousel">
 
-          <div class="testimonial-card">
-            <%= image_tag "2.png", alt: "Depoimento 2" %>
-          </div>
+      <button class="carousel-btn prev" aria-label="Voltar" type="button">‹</button>
 
-          <div class="testimonial-card">
-            <%= image_tag "3.png", alt: "Depoimento 3" %>
-          </div>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="testimonialsTrack">
 
-          <div class="testimonial-card">
-            <%= image_tag "4.png", alt: "Depoimento 4" %>
-          </div>
+          <!-- Card 1 -->
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              Depois da consultoria, tudo mudou. Entendemos o que estava acontecendo e finalmente conseguimos uma rotina possível...
+            </p>
+            <button class="testimonial-more" type="button"
+              data-full="Depois da consultoria, tudo mudou. Entendemos o que estava acontecendo e finalmente conseguimos uma rotina possível. Foi respeitoso e acolhedor do início ao fim. Eu me senti orientada e segura durante todo o processo.">
+              Ver mais
+            </button>
+            <p class="testimonial-name">— Mãe da Clara (8 meses)</p>
+          </article>
 
-          <div class="testimonial-card">
-            <%= image_tag "5.png", alt: "Depoimento 5" %>
-          </div>
+          <!-- Card 2 -->
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              O acompanhamento foi essencial. A cada ajuste eu me sentia mais segura para aplicar e a casa inteira ficou mais leve...
+            </p>
+            <button class="testimonial-more" type="button"
+              data-full="O acompanhamento foi essencial. A cada ajuste eu me sentia mais segura para aplicar e a casa inteira ficou mais leve. Mudou o nosso dia. A consultoria foi um divisor de águas.">
+              Ver mais
+            </button>
+            <p class="testimonial-name">— Família do Arthur</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento...
+            </p>
+            <button class="testimonial-more" type="button"
+              data-full="Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento. Eu me senti respeitada e orientada de verdade. Foi leve e transformador.">
+              Ver mais
+            </button>
+            <p class="testimonial-name">— Mãe do Bernardo</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento...
+            </p>
+            <button class="testimonial-more" type="button"
+              data-full="Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento. Eu me senti respeitada e orientada de verdade. Foi leve e transformador.">
+              Ver mais
+            </button>
+            <p class="testimonial-name">— Mãe do Bernardo</p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento...
+            </p>
+            <button class="testimonial-more" type="button"
+              data-full="Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento. Eu me senti respeitada e orientada de verdade. Foi leve e transformador.">
+              Ver mais
+            </button>
+            <p class="testimonial-name">— Mãe do Bernardo</p>
+          </article>
+
         </div>
       </div>
 
-      <button class="cards-carousel-btn next" aria-label="Próximo" data-cards-next>›</button>
-    </div>
+      <button class="carousel-btn next" aria-label="Avançar" type="button">›</button>
 
-    <div class="cards-carousel-dots" data-cards-dots></div>
+    </div>
   </div>
 </section>
+
+
+<!-- MODAL -->
+<div class="testimonial-modal" id="testimonialModal" aria-hidden="true">
+  <div class="testimonial-modal-content">
+    <button class="modal-close" id="modalClose" aria-label="Fechar" type="button">×</button>
+    <p class="modal-text" id="modalText"></p>
+  </div>
+</div>

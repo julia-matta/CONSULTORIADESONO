@@ -1,117 +1,137 @@
-/* ===== DEPOIMENTOS / CARROSSEL ===== */
-.testimonials-section {
-  padding: 40px 0 80px;
-  background: #fff;
-}
-
-.cards-carousel {
+.testimonials-carousel {
   position: relative;
-  margin-top: 28px;
-  overflow: visible; /* ✅ importante */
+  margin-top: 26px;
 }
 
-.cards-carousel-viewport {
+/* área que recorta o carrossel */
+.carousel-viewport {
   overflow: hidden;
   width: 100%;
-  position: relative; /* ✅ garante camada correta */
-  z-index: 1;
+  padding: 10px 60px; /* espaço para as setas */
+  box-sizing: border-box;
 }
 
-.cards-carousel-track {
+/* trilho com os cards */
+.carousel-track {
   display: flex;
-  gap: 18px;
+  gap: 22px;
   transition: transform 0.35s ease;
   will-change: transform;
 }
 
-/* CARD */
+/* CARD PADRÃO (maior e igual) */
 .testimonial-card {
-  flex: 0 0 calc((100% - 36px) / 3);
+  flex: 0 0 calc((100% - (22px * 2)) / 3); /* 3 cards exatos */
+  min-height: 300px;
   border-radius: 18px;
-  overflow: hidden;
+  padding: 28px;
+
   background: #fff;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
 
-  height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
 }
 
-.testimonial-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* botões */
-.cards-carousel-btn {
+/* aspas */
+.testimonial-card::before {
+  content: "“";
   position: absolute;
-  top: 50%;
+  top: 14px;
+  left: 18px;
+  font-size: 64px;
+  line-height: 1;
+  color: rgba(91, 181, 180, 0.22);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+/* texto truncado */
+.testimonial-quote {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  margin: 0 0 14px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ver mais */
+.testimonial-more {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5BB5B4;
+
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.testimonial-name {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* botões carrossel */
+.carousel-btn {
+  position: absolute;
+  top: 55%;
   transform: translateY(-50%);
-  z-index: 9999; /* ✅ acima de tudo */
-  pointer-events: auto; /* ✅ garante clique */
+  z-index: 5;
 
   width: 44px;
   height: 44px;
-  border-radius: 999px;
-  border: none;
-
-  background: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-
-  font-size: 28px;
-  font-weight: 700;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: transform 0.15s ease;
-}
-
-.cards-carousel-btn:hover {
-  transform: translateY(-50%) scale(1.05);
-}
-
-/* ✅ não usar negativo (senão corta / não clica) */
-.cards-carousel-btn.prev { left: 10px; }
-.cards-carousel-btn.next { right: 10px; }
-
-/* dots */
-.cards-carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.cards-carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: rgba(91, 181, 180, 0.35);
+
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  font-size: 26px;
+  line-height: 1;
+  color: #5BB5B4;
 }
 
-.cards-carousel-dot.is-active {
-  background: #5BB5B4;
-}
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
 
-/* Responsivo: tablet 2 cards */
+/* Mobile: 1 card por vez */
 @media (max-width: 900px) {
+  .carousel-btn {
+    display: none;
+  }
+
+  .carousel-viewport {
+    padding: 10px 0;
+  }
+
+  .carousel-track {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .testimonial-card {
-    flex: 0 0 calc((100% - 18px) / 2);
-    height: 420px; /* ✅ ajusta altura do card */
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
   }
 }
 
-/* Responsivo: celular 1 card */
-@media (max-width: 600px) {
-  .testimonial-card {
-    flex: 0 0 100%;
-    height: 380px; /* ✅ ajusta altura do card */
-  }
-
-  .cards-carousel-btn.prev { left: 8px; }
-  .cards-carousel-btn.next { right: 8px; }
+.carousel-btn {
+  z-index: 9999;
+  pointer-events: auto;
 }
