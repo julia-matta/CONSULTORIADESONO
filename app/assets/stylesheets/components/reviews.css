@@ -10,10 +10,11 @@
    HERO (topo)
 ============================== */
 
-.testimonials-hero {
-  padding: 28px 0 6px;
-  background: linear-gradient(180deg, rgba(91, 181, 180, 0.08), rgba(255,255,255,0));
+.testimonials-hero{
+  padding: 38px 0 18px;
+  background: #fff; /* ✅ clean */
 }
+
 
 .testimonials-hero h1 {
   font-family: 'Poppins', sans-serif;
@@ -21,6 +22,8 @@
   font-weight: 600;
   margin: 0 0 12px;
   color: #5BB5B4;
+  letter-spacing: -0.6px;
+  line-height: 1.1;
 }
 
 .testimonials-subtitle {
@@ -44,48 +47,56 @@
 
 
 /* ==============================
-   CARROSSEL
+   CARROSSEL (correto / sem recorte feio)
 ============================== */
 
 .testimonials-carousel {
   position: relative;
   display: flex;
   align-items: center;
+
+  /* ✅ deixa qualquer "marca/caixa" invisível */
+  overflow: visible;
 }
 
-/* fade nas laterais */
+/* fade nas laterais (✅ SEM cortar sombra) */
 .testimonials-carousel::before,
 .testimonials-carousel::after {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 90px;
-  z-index: 4;
+  width: 120px;
   pointer-events: none;
+
+  /* ✅ fica ATRÁS de tudo */
+  z-index: 0;
 }
 
 .testimonials-carousel::before {
   left: 0;
-  background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+  background: linear-gradient(to right, #fff 40%, rgba(255,255,255,0));
 }
 
 .testimonials-carousel::after {
   right: 0;
-  background: linear-gradient(to left, #fff, rgba(255,255,255,0));
+  background: linear-gradient(to left, #fff 40%, rgba(255,255,255,0));
 }
 
-/* viewport (recorta carrossel, mas sem cortar sombras) */
+/* viewport (recorta carrossel) */
 .carousel-viewport {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+
   overflow: hidden;
   width: 100%;
 
-    /* evita a linha da sombra cortada */
-  padding-bottom: 60px;
-  margin-bottom: -60px;
-  box-sizing: border-box;
+  /* ✅ FIX: remove qualquer faixa/retângulo vindo de outro CSS */
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* trilho com os cards */
@@ -94,6 +105,14 @@
   gap: 22px;
   transition: transform 0.35s ease;
   will-change: transform;
+
+  position: relative;
+  z-index: 3;
+
+  /* ✅ FIX: garante que não existe "caixa" no track */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 
@@ -108,22 +127,22 @@
   padding: 28px;
 
   background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+
+  /* toque mais premium sem perder clean */
+  border: 1px solid rgba(91,181,180,0.10);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.07);
 
   display: flex;
   flex-direction: column;
-
   justify-content: flex-start;
 
   position: relative;
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .testimonial-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 26px 60px rgba(0,0,0,0.09);
 }
 
 /* aspas */
@@ -134,11 +153,10 @@
   left: 18px;
   font-size: 64px;
   line-height: 1;
-  color: rgba(91, 181, 180, 0.22);
+  color: rgba(91, 181, 180, 0.16);
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
-
 
 /* texto truncado */
 .testimonial-quote {
@@ -147,13 +165,14 @@
   line-height: 1.8;
   color: #666;
   margin: 0 0 14px;
+
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
   flex: 1;
 }
-
 
 /* rodapé do card */
 .testimonial-footer {
@@ -209,6 +228,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  /* ✅ fica acima de tudo */
   z-index: 50;
 
   width: 44px;
@@ -270,7 +291,8 @@
   border-radius: 22px;
 
   padding: 28px 28px 26px;
-  border: 1px solid rgba(0,0,0,0.06);
+
+  border: 1px solid rgba(91,181,180,0.18);
   box-shadow: 0 28px 70px rgba(0,0,0,0.22);
 
   position: relative;
@@ -322,6 +344,19 @@
   box-shadow: 0 14px 40px rgba(0,0,0,0.16);
 }
 
+/* Nome do depoimento */
+.modal-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5BB5B4;
+  letter-spacing: 0.2px;
+}
+
 /* Texto dentro do modal */
 .modal-text {
   position: relative;
@@ -335,11 +370,9 @@
   margin: 0;
   padding-right: 6px;
 
-  /* ✅ mantém quebras de linha */
   white-space: pre-line;
 
-  /* ✅ faz scroll bonito */
-  max-height: calc(80vh - 90px);
+  max-height: calc(80vh - 130px);
   overflow: auto;
 }
 
@@ -355,26 +388,6 @@
   background: transparent;
 }
 
-.modal-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #5BB5B4;
-  letter-spacing: 0.2px;
-}
-
-
-/* Mobile */
-@media (max-width: 600px) {
-  .testimonial-modal-content {
-    padding: 22px 18px 18px;
-    border-radius: 18px;
-  }
-
-  .modal-text {
-    font-size: 15px;
-    line-height: 1.85;
-  }
-}
 
 /* ==============================
    RESPONSIVO
@@ -386,6 +399,7 @@
   }
 
   .carousel-viewport {
+    /* ✅ não mexe em padding lateral do viewport */
     padding: 10px 0 70px;
     margin-bottom: -50px;
   }
@@ -419,6 +433,266 @@
   }
 }
 
-.modal-text {
-  white-space: pre-line;
+@media (max-width: 600px) {
+  .testimonial-modal-content {
+    padding: 22px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .modal-text {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+}
+
+/* ==============================
+   CARROSSEL — acabamento premium e fluido
+============================== */
+
+.testimonials-section {
+  width: 100%;
+  padding: 0 0 80px;
+  margin-top: 0; /* ✅ remove o puxão feio */
+  background: transparent;
+}
+
+
+/* container do carrossel */
+.testimonials-carousel{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+}
+
+/* ✅ fade laterais MAIS leve e sem "marca feia" */
+.testimonials-carousel::before,
+.testimonials-carousel::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  pointer-events: none;
+
+  /* fica atrás de tudo */
+  z-index: 0;
+}
+
+.testimonials-carousel::before{
+  left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,1) 50%, rgba(255,255,255,0));
+}
+
+.testimonials-carousel::after{
+  right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,1) 50%, rgba(255,255,255,0));
+}
+
+/* ✅ viewport NÃO deve ter padding/margin “gambiarra” */
+.carousel-viewport{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+/* trilho */
+.carousel-track{
+  display: flex;
+  gap: 22px;
+  transition: transform 0.35s ease;
+  will-change: transform;
+
+  /* ✅ evita qualquer efeito estranho de "caixa" */
+  position: relative;
+  z-index: 3;
+}
+
+
+/* ==============================
+   CARDS — mais elegante, leve e uniforme
+============================== */
+
+.testimonial-card{
+  flex: 0 0 calc((100% - (22px * 2)) / 3);
+  min-height: 290px;
+
+  border-radius: 20px;
+  padding: 30px 28px 26px;
+
+  background: rgba(255,255,255,0.98);
+
+  /* ✅ borda com tom da marca */
+  border: 1px solid rgba(91,181,180,0.10);
+
+  /* ✅ sombra mais bonita e suave */
+  box-shadow: 0 18px 55px rgba(0,0,0,0.06);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.08);
+}
+
+/* aspas delicadas */
+.testimonial-card::before{
+  content: "“";
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-size: 64px;
+  line-height: 1;
+
+  color: rgba(91,181,180,0.14);
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+/* texto */
+.testimonial-quote{
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  color: #666;
+
+  margin: 0 0 18px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  flex: 1;
+}
+
+/* footer */
+.testimonial-footer{
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ver mais */
+.testimonial-more{
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #5BB5B4;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.testimonial-more::after{
+  content: " →";
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.testimonial-more:hover{
+  opacity: 0.85;
+}
+
+.testimonial-more:hover::after{
+  transform: translateX(4px);
+}
+
+.testimonial-name{
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #777;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+/* ==============================
+   BOTÕES — menores, elegantes, sem poluir
+============================== */
+
+.carousel-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  border: 1px solid rgba(91,181,180,0.18);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+
+  font-size: 26px;
+  line-height: 1;
+  color: #5BB5B4;
+
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.carousel-btn.prev{ left: -10px; }
+.carousel-btn.next{ right: -10px; }
+
+.carousel-btn:hover{
+  transform: translateY(-50%) scale(1.06);
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.16);
+}
+
+/* evita botão ficar “em cima do texto” quando o card encosta */
+@media (max-width: 1100px){
+  .carousel-btn.prev{ left: 6px; }
+  .carousel-btn.next{ right: 6px; }
+}
+
+
+/* ==============================
+   Mobile
+============================== */
+
+@media (max-width: 900px){
+  .carousel-btn{
+    display: none;
+  }
+
+  .carousel-track{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 14px;
+  }
+
+  .testimonial-card{
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+  }
+}
+
+.testimonials-wrap{
+  width: min(1120px, 92vw);
+  margin: 0 auto;
 }
