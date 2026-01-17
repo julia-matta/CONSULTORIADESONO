@@ -24,31 +24,31 @@
           <!-- Card 1 -->
           <article class="testimonial-card">
             <p class="testimonial-quote">
-              Depois da consultoria, tudo mudou. Entendemos o que estava acontecendo e finalmente conseguimos uma rotina possível...
+              Tenho gêmeas de 4 anos. Uma sempre dormiu a noite toda… mas a outra acordava todas as noites, sem exceção — chegou a acordar 11 vezes. Era desesperador.
+
+              Eu me sentia no limite, esgotada pela privação de sono (e ainda precisava trabalhar com leituras e documentos importantes). Eu também precisava ninar as duas todos os dias, porque, do contrário, não dormiam.
+
+              Graças a Deus e à Mônica, a qualidade do sono da minha filha melhorou em torno de 90%.
+
+              Minha família e eu só temos uma palavra: gratidão. Obrigada por todo apoio, paciência e conhecimento oferecidos — você salvou nossas vidas e melhorou tremendamente nossas noites e dias. Acredito que com o tempo ainda teremos mais avanços, mas já sinto que valeu cada centavo investido.
             </p>
 
             <div class="testimonial-footer">
-              <button class="testimonial-more" type="button"
-                data-full="Depois da consultoria, tudo mudou. Entendemos o que estava acontecendo e finalmente conseguimos uma rotina possível. Foi respeitoso e acolhedor do início ao fim. Eu me senti orientada e segura durante todo o processo.">
-                Ver mais
-              </button>
-
-              <p class="testimonial-name">— Mãe da Clara (8 meses)</p>
+              <button class="testimonial-more" type="button">Ver mais</button>
+              <p class="testimonial-name">— Ryvane Monteiro</p>
             </div>
           </article>
 
           <!-- Card 2 -->
           <article class="testimonial-card">
             <p class="testimonial-quote">
-              O acompanhamento foi essencial. A cada ajuste eu me sentia mais segura para aplicar e a casa inteira ficou mais leve...
+              O acompanhamento foi essencial. A cada ajuste eu me sentia mais segura para aplicar — e a casa inteira ficou mais leve.
+
+              Mudou o nosso dia. A consultoria foi um divisor de águas.
             </p>
 
             <div class="testimonial-footer">
-              <button class="testimonial-more" type="button"
-                data-full="O acompanhamento foi essencial. A cada ajuste eu me sentia mais segura para aplicar e a casa inteira ficou mais leve. Mudou o nosso dia. A consultoria foi um divisor de águas.">
-                Ver mais
-              </button>
-
+              <button class="testimonial-more" type="button">Ver mais</button>
               <p class="testimonial-name">— Família do Arthur</p>
             </div>
           </article>
@@ -56,15 +56,13 @@
           <!-- Card 3 -->
           <article class="testimonial-card">
             <p class="testimonial-quote">
-              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento...
+              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento.
+
+              Eu me senti respeitada e orientada de verdade. Foi leve e transformador.
             </p>
 
             <div class="testimonial-footer">
-              <button class="testimonial-more" type="button"
-                data-full="Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento. Eu me senti respeitada e orientada de verdade. Foi leve e transformador.">
-                Ver mais
-              </button>
-
+              <button class="testimonial-more" type="button">Ver mais</button>
               <p class="testimonial-name">— Mãe do Bernardo</p>
             </div>
           </article>
@@ -72,32 +70,28 @@
           <!-- Card 4 -->
           <article class="testimonial-card">
             <p class="testimonial-quote">
-              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento...
+              Depois da consultoria, tudo mudou. Entendi o que estava acontecendo e finalmente conseguimos uma rotina possível.
+
+              Foi respeitoso e acolhedor do início ao fim. Me senti orientada e segura durante todo o processo.
             </p>
 
             <div class="testimonial-footer">
-              <button class="testimonial-more" type="button"
-                data-full="Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento. Eu me senti respeitada e orientada de verdade. Foi leve e transformador.">
-                Ver mais
-              </button>
-
-              <p class="testimonial-name">— Mãe do Bernardo</p>
+              <button class="testimonial-more" type="button">Ver mais</button>
+              <p class="testimonial-name">— Mãe da Clara (8 meses)</p>
             </div>
           </article>
 
           <!-- Card 5 -->
           <article class="testimonial-card">
             <p class="testimonial-quote">
-              Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento...
+              Foi muito além do que eu imaginava. As orientações foram práticas, realistas e fáceis de aplicar na rotina — e isso fez toda a diferença.
+
+              Hoje a gente tem mais previsibilidade, mais descanso e uma casa muito mais tranquila.
             </p>
 
             <div class="testimonial-footer">
-              <button class="testimonial-more" type="button"
-                data-full="Eu cheguei exausta e sem saber o que fazer. A consultoria não foi só sobre sono — foi sobre acolhimento. Eu me senti respeitada e orientada de verdade. Foi leve e transformador.">
-                Ver mais
-              </button>
-
-              <p class="testimonial-name">— Mãe do Bernardo</p>
+              <button class="testimonial-more" type="button">Ver mais</button>
+              <p class="testimonial-name">— Depoimento anônimo</p>
             </div>
           </article>
 
@@ -111,10 +105,20 @@
 </section>
 
 
-<!-- MODAL -->
+<!-- MODAL (substituído - versão premium com título) -->
 <div class="testimonial-modal" id="testimonialModal" aria-hidden="true">
-  <div class="testimonial-modal-content">
+  <div
+    class="testimonial-modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
     <button class="modal-close" id="modalClose" aria-label="Fechar" type="button">×</button>
+
+    <!-- ✅ Nome/título do depoimento -->
+    <p class="modal-title" id="modalTitle"></p>
+
+    <!-- ✅ Texto completo -->
     <p class="modal-text" id="modalText"></p>
   </div>
 </div>

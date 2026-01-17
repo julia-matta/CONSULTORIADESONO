@@ -6,6 +6,9 @@ export function initTestimonialsCarousel() {
   if (track.dataset.carouselInit === "true") return;
   track.dataset.carouselInit = "true";
 
+  // ✅ ativa modal
+  initTestimonialsModal();
+
   const root = track.closest(".testimonials-carousel") || document;
   const prev = root.querySelector(".carousel-btn.prev");
   const next = root.querySelector(".carousel-btn.next");
@@ -46,4 +49,70 @@ export function initTestimonialsCarousel() {
   });
 
   requestAnimationFrame(update);
+}
+
+/* ==============================
+   MODAL (Ver mais) — pega texto do card
+============================== */
+function initTestimonialsModal() {
+  const modal = document.getElementById("testimonialModal");
+  const modalClose = document.getElementById("modalClose");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalText = document.getElementById("modalText");
+
+  if (!modal || !modalClose || !modalTitle || !modalText) return;
+
+  // evita duplicar listeners com Turbo
+  if (modal.dataset.modalInit === "true") return;
+  modal.dataset.modalInit = "true";
+
+  const openModal = ({ title, text }) => {
+    modalTitle.textContent = title || "";
+    modalText.textContent = (text || "").trim();
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+
+    modalTitle.textContent = "";
+    modalText.textContent = "";
+  };
+
+  // ✅ clique no botão "Ver mais"
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".testimonial-more");
+    if (!btn) return;
+
+    const card = btn.closest(".testimonial-card");
+    if (!card) return;
+
+    const quote = card.querySelector(".testimonial-quote");
+    const name = card.querySelector(".testimonial-name");
+
+    if (!quote) return;
+
+    openModal({
+      title: name?.innerText || "",
+      text: quote.innerText,
+    });
+  });
+
+  // fechar no X
+  modalClose.addEventListener("click", closeModal);
+
+  // fechar clicando fora do card
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // fechar com ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("open")) {
+      closeModal();
+    }
+  });
 }
