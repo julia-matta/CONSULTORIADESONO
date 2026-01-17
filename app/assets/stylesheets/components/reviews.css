@@ -81,6 +81,11 @@
   z-index: 1;
   overflow: hidden;
   width: 100%;
+
+    /* evita a linha da sombra cortada */
+  padding-bottom: 60px;
+  margin-bottom: -60px;
+  box-sizing: border-box;
 }
 
 /* trilho com os cards */
