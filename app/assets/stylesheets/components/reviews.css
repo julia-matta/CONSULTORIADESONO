@@ -122,10 +122,10 @@
   border-radius: 20px;
   padding: 30px 28px 26px;
 
-  background: rgba(255,255,255,0.98);
+  background: #fff;
 
   border: 1px solid rgba(91,181,180,0.10);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.06);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.05);
 
   display: flex;
   flex-direction: column;
@@ -508,4 +508,25 @@
     font-size: 15px;
     line-height: 1.85;
   }
+}
+
+.carousel-dots{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.carousel-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(91,181,180,0.25);
+}
+
+.carousel-dot.active{
+  background: #5BB5B4;
+  transform: scale(1.2);
 }

@@ -6,49 +6,151 @@ export function initTestimonialsCarousel() {
   if (track.dataset.carouselInit === "true") return;
   track.dataset.carouselInit = "true";
 
-  // ✅ ativa modal
+  // ✅ ativa modal (se você ainda usa modal)
   initTestimonialsModal();
 
   const root = track.closest(".testimonials-carousel") || document;
   const prev = root.querySelector(".carousel-btn.prev");
   const next = root.querySelector(".carousel-btn.next");
 
+  const viewport = track.parentElement;
+  if (!viewport) return;
+
   const cards = track.querySelectorAll(".testimonial-card");
   if (cards.length === 0) return;
 
+  // ✅ cria dots automaticamente logo abaixo do carrossel
+  let dotsContainer = root.parentElement?.querySelector("#carouselDots");
+  if (!dotsContainer) {
+    dotsContainer = document.createElement("div");
+    dotsContainer.className = "carousel-dots";
+    dotsContainer.id = "carouselDots";
+    root.parentElement?.appendChild(dotsContainer);
+  }
+
   let index = 0;
-  const perPage = 3;
 
-  const viewport = track.parentElement;
-
-  const update = () => {
-    const styles = getComputedStyle(viewport);
-    const step =
-      viewport.clientWidth -
-      parseFloat(styles.paddingLeft) -
-      parseFloat(styles.paddingRight);
-
-    track.style.transform = `translateX(-${index * step}px)`;
+  const getPerPage = () => {
+    const w = window.innerWidth;
+    if (w <= 620) return 1;
+    if (w <= 980) return 2;
+    return 3;
   };
 
-  window.addEventListener("resize", () => {
-    index = 0;
-    track.style.transform = "translateX(0px)";
-    requestAnimationFrame(update);
-  });
+  const getMaxIndex = () => {
+    const perPage = getPerPage();
+    return Math.max(0, Math.ceil(cards.length / perPage) - 1);
+  };
 
+  const getStep = () => {
+    const styles = getComputedStyle(viewport);
+    return (
+      viewport.clientWidth -
+      parseFloat(styles.paddingLeft) -
+      parseFloat(styles.paddingRight)
+    );
+  };
+
+  const update = (animate = true) => {
+    const max = getMaxIndex();
+
+    if (index > max) index = 0;
+    if (index < 0) index = max;
+
+    if (!animate) track.style.transition = "none";
+    else track.style.transition = "transform 0.35s ease";
+
+    track.style.transform = `translateX(-${index * getStep()}px)`;
+
+    // reativa transição após update sem animação
+    if (!animate) requestAnimationFrame(() => (track.style.transition = "transform 0.35s ease"));
+
+    updateDots();
+  };
+
+  // ===== DOTS =====
+  const buildDots = () => {
+    dotsContainer.innerHTML = "";
+    const total = getMaxIndex() + 1;
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.setAttribute("aria-label", `Ir para página ${i + 1} do carrossel`);
+
+      dot.addEventListener("click", () => {
+        index = i;
+        update(true);
+      });
+
+      dotsContainer.appendChild(dot);
+    }
+
+    updateDots();
+  };
+
+  const updateDots = () => {
+    const dots = dotsContainer.querySelectorAll(".carousel-dot");
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  };
+
+  // ===== LOOP (setas) =====
   next?.addEventListener("click", () => {
-    const maxIndex = Math.ceil(cards.length / perPage) - 1;
-    if (index < maxIndex) index += 1;
-    update();
+    index += 1;
+    update(true);
   });
 
   prev?.addEventListener("click", () => {
-    if (index > 0) index -= 1;
-    update();
+    index -= 1;
+    update(true);
   });
 
-  requestAnimationFrame(update);
+  // ===== SWIPE / DRAG =====
+  let isDown = false;
+  let startX = 0;
+  let moved = false;
+
+  viewport.addEventListener("pointerdown", (e) => {
+    isDown = true;
+    moved = false;
+    startX = e.clientX;
+    viewport.setPointerCapture(e.pointerId);
+  });
+
+  viewport.addEventListener("pointermove", (e) => {
+    if (!isDown) return;
+    const diff = e.clientX - startX;
+    if (Math.abs(diff) > 10) moved = true;
+  });
+
+  viewport.addEventListener("pointerup", (e) => {
+    if (!isDown) return;
+    isDown = false;
+
+    const diff = e.clientX - startX;
+    if (!moved) return;
+
+    // thresholds
+    if (diff < -40) {
+      index += 1;
+      update(true);
+    } else if (diff > 40) {
+      index -= 1;
+      update(true);
+    }
+  });
+
+  // ===== RESIZE =====
+  window.addEventListener("resize", () => {
+    index = 0;
+    buildDots();
+    update(false);
+  });
+
+  // INIT
+  buildDots();
+  requestAnimationFrame(() => update(false));
 }
 
 /* ==============================
@@ -82,7 +184,7 @@ function initTestimonialsModal() {
     modalText.textContent = "";
   };
 
-  // ✅ clique no botão "Ver mais"
+  // clique no botão "Ver mais"
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".testimonial-more");
     if (!btn) return;
@@ -101,15 +203,12 @@ function initTestimonialsModal() {
     });
   });
 
-  // fechar no X
   modalClose.addEventListener("click", closeModal);
 
-  // fechar clicando fora do card
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
 
-  // fechar com ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("open")) {
       closeModal();
