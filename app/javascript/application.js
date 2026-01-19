@@ -7,3 +7,9 @@ document.addEventListener("turbo:load", () => {
   console.log("turbo:load ✅")
   initTestimonialsCarousel()
 })
+
+import { initFAQ } from "pages/faq"
+
+document.addEventListener("turbo:load", () => {
+  initFAQ()
+})

@@ -1,0 +1,183 @@
+/* ==============================
+   DÚVIDAS / FAQ — coerente com o site
+============================== */
+
+.faq-hero {
+  padding: 28px 0 14px;
+  background: #fff;
+  background: linear-gradient(180deg, rgba(91, 181, 180, 0.08), rgba(255,255,255,0));
+}
+
+.faq-hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #5BB5B4;
+}
+
+.faq-subtitle {
+  max-width: 780px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #777;
+  margin: 0;
+}
+
+
+/* ==============================
+   GRID
+============================== */
+
+.faq-section {
+  padding: 16px 0 70px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 38px;
+  align-items: start;
+}
+
+.faq-list h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #5BB5B4;
+  margin: 0 0 18px;
+}
+
+
+/* ==============================
+   ITEM
+============================== */
+
+.faq-item {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 20px;
+  cursor: pointer;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #2f2f2f;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.faq-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(91, 181, 180, 0.12);
+  color: #5BB5B4;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+  margin: 0;
+  padding: 0 20px 20px;
+
+  font-size: 16px;
+  line-height: 1.85;
+  color: #777;
+}
+
+
+/* ==============================
+   ABERTO
+============================== */
+
+.faq-item.open .faq-answer {
+  max-height: 500px;
+}
+
+.faq-item.open .faq-icon {
+  background: rgba(91, 181, 180, 0.22);
+}
+
+
+/* ==============================
+   LATERAL (CTA)
+============================== */
+
+.faq-side-card {
+  background: rgba(91, 181, 180, 0.10);
+  border: 1px solid rgba(91, 181, 180, 0.20);
+  border-radius: 22px;
+  padding: 28px;
+}
+
+.faq-side-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #5BB5B4;
+  margin: 0 0 12px;
+}
+
+.faq-side-card p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.85;
+  margin: 0 0 18px;
+}
+
+.btn-faq {
+  display: inline-block;
+  font-size: 16px;
+  padding: 18px 44px;
+  border-radius: 50px;
+  margin-top: 6px;
+}
+
+.faq-side-note {
+  margin-top: 16px !important;
+  font-size: 14px !important;
+  opacity: 0.85;
+}
+
+
+/* ==============================
+   RESPONSIVO
+============================== */
+
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-hero h1 {
+    font-size: 34px;
+  }
+
+  .faq-subtitle {
+    font-size: 17px;
+  }
+}
