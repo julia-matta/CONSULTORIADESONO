@@ -1,84 +1,65 @@
 export function initTestimonials() {
-  initTestimonialsCarousel();
   initTestimonialsModal();
 }
 
 /* =======================
-   CARROSSEL
-======================= */
-function initTestimonialsCarousel() {
-  const track = document.getElementById("testimonialsTrack");
-  const prev = document.querySelector(".carousel-btn.prev");
-  const next = document.querySelector(".carousel-btn.next");
-
-  if (!track || !prev || !next) return;
-
-  const cards = track.querySelectorAll(".testimonial-card");
-  if (cards.length === 0) return;
-
-  let index = 0;
-  const perPage = 3;
-
-  const update = () => {
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 22;
-    const step = perPage * (cardWidth + gap);
-    track.style.transform = `translateX(-${index * step}px)`;
-  };
-
-  next.addEventListener("click", () => {
-    const maxIndex = Math.ceil(cards.length / perPage) - 1;
-    index = Math.min(index + 1, maxIndex);
-    update();
-  });
-
-  prev.addEventListener("click", () => {
-    index = Math.max(index - 1, 0);
-    update();
-  });
-
-  window.addEventListener("resize", () => {
-    index = 0;
-    update();
-  });
-
-  update();
-}
-
-/* =======================
    MODAL DO "VER MAIS"
+   ✅ pega texto direto do card (sem data-full)
 ======================= */
 function initTestimonialsModal() {
   const modal = document.getElementById("testimonialModal");
+  const modalTitle = document.getElementById("modalTitle");
   const modalText = document.getElementById("modalText");
   const modalClose = document.getElementById("modalClose");
 
   if (!modal || !modalText || !modalClose) return;
 
-  document.querySelectorAll(".testimonial-more").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      modalText.textContent = btn.dataset.full || "";
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
+  // evita listeners duplicados com Turbo
+  if (modal.dataset.modalInit === "true") return;
+  modal.dataset.modalInit = "true";
+
+  const openModal = ({ title, text }) => {
+    if (modalTitle) modalTitle.textContent = title || "";
+    modalText.textContent = (text || "").trim();
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+
+    if (modalTitle) modalTitle.textContent = "";
+    modalText.textContent = "";
+  };
+
+  // clique no botão ver mais
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".testimonial-more");
+    if (!btn) return;
+
+    const card = btn.closest(".testimonial-card");
+    if (!card) return;
+
+    const quote = card.querySelector(".testimonial-quote");
+    const name = card.querySelector(".testimonial-name");
+
+    if (!quote) return;
+
+    openModal({
+      title: name?.innerText || "",
+      text: quote.innerText,
     });
   });
 
-  modalClose.addEventListener("click", () => {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-  });
+  modalClose.addEventListener("click", closeModal);
 
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-    }
+    if (e.target === modal) closeModal();
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-    }
+    if (e.key === "Escape") closeModal();
   });
 }

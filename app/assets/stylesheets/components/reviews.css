@@ -453,6 +453,9 @@
 /* ==============================
    RESPONSIVO
 ============================== */
+/* ==============================
+   RESPONSIVO
+============================== */
 
 @media (max-width: 900px) {
   /* ✅ base mobile (full-bleed correto) */
@@ -467,20 +470,42 @@
   }
 
   .carousel-btn {
-    display: none;
+    display: none !important;
   }
 
-  .carousel-track{
-    overflow-x: auto;
+  /* ✅ SWIPE acontece no VIEWPORT */
+  .carousel-viewport{
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 
-    /* ✅ alinhamento com bordas no mobile */
+    /* mantém seu esquema de sombra sem mudar aparência */
+    padding-bottom: 34px;
+    margin-bottom: -34px;
+
+    /* evita colar na borda */
+    scroll-padding-left: 16px;
+    scroll-padding-right: 16px;
+  }
+
+  /* ✅ track não é scroll container */
+  .carousel-track{
+    transition: none !important;
+    transform: none !important;
+
+    display: flex;
+    gap: 22px;
+
     padding: 10px 16px;
+    box-sizing: border-box;
+
+    /* garante que o flex tenha largura suficiente pra scroll */
+    width: max-content;
   }
 
   .testimonial-card{
-    flex: 0 0 85vw;
+    flex: 0 0 85vw !important;
     scroll-snap-align: start;
   }
 
@@ -512,6 +537,11 @@
     padding: 16px 20px;
     font-size: 16px;
   }
+
+  /* dots não aparecem no mobile */
+  .carousel-dots{
+    display: none !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -526,6 +556,7 @@
   }
 }
 
+/* dots (desktop) */
 .carousel-dots{
   display: flex;
   justify-content: center;
