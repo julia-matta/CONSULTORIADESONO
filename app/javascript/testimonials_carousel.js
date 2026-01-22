@@ -6,20 +6,20 @@ export function initTestimonialsCarousel() {
   if (track.dataset.carouselInit === "true") return;
   track.dataset.carouselInit = "true";
 
-  // ✅ ativa modal (se você ainda usa modal)
+  // ✅ ativa modal
   initTestimonialsModal();
 
   const root = track.closest(".testimonials-carousel") || document;
   const prev = root.querySelector(".carousel-btn.prev");
   const next = root.querySelector(".carousel-btn.next");
 
-  const viewport = track.parentElement;
+  const viewport = root.querySelector(".carousel-viewport");
   if (!viewport) return;
 
   const cards = track.querySelectorAll(".testimonial-card");
   if (cards.length === 0) return;
 
-  // ✅ cria dots automaticamente logo abaixo do carrossel
+  // ✅ dots
   let dotsContainer = root.parentElement?.querySelector("#carouselDots");
   if (!dotsContainer) {
     dotsContainer = document.createElement("div");
@@ -30,25 +30,26 @@ export function initTestimonialsCarousel() {
 
   let index = 0;
 
-  const getPerPage = () => {
-    const w = window.innerWidth;
-    if (w <= 620) return 1;
-    if (w <= 980) return 2;
-    return 3;
+  const getStep = () => {
+    // anda sempre por “páginas” do tamanho do viewport
+    return viewport.getBoundingClientRect().width;
   };
 
   const getMaxIndex = () => {
-    const perPage = getPerPage();
-    return Math.max(0, Math.ceil(cards.length / perPage) - 1);
-  };
+    const step = getStep();
+    if (!step) return 0;
 
-  const getStep = () => {
-    const styles = getComputedStyle(viewport);
-    return (
-      viewport.clientWidth -
-      parseFloat(styles.paddingLeft) -
-      parseFloat(styles.paddingRight)
-    );
+    // total rolável do track (inclui padding do track, gap, etc)
+    const totalScrollable = track.scrollWidth;
+
+    // tamanho visível
+    const visible = viewport.getBoundingClientRect().width;
+
+    // quanto sobra para rolar
+    const remaining = Math.max(0, totalScrollable - visible);
+
+    // número de páginas possíveis
+    return Math.ceil(remaining / step);
   };
 
   const update = (animate = true) => {
@@ -62,8 +63,11 @@ export function initTestimonialsCarousel() {
 
     track.style.transform = `translateX(-${index * getStep()}px)`;
 
-    // reativa transição após update sem animação
-    if (!animate) requestAnimationFrame(() => (track.style.transition = "transform 0.35s ease"));
+    if (!animate) {
+      requestAnimationFrame(() => {
+        track.style.transition = "transform 0.35s ease";
+      });
+    }
 
     updateDots();
   };
@@ -131,7 +135,6 @@ export function initTestimonialsCarousel() {
     const diff = e.clientX - startX;
     if (!moved) return;
 
-    // thresholds
     if (diff < -40) {
       index += 1;
       update(true);
@@ -164,7 +167,6 @@ function initTestimonialsModal() {
 
   if (!modal || !modalClose || !modalTitle || !modalText) return;
 
-  // evita duplicar listeners com Turbo
   if (modal.dataset.modalInit === "true") return;
   modal.dataset.modalInit = "true";
 
@@ -184,7 +186,6 @@ function initTestimonialsModal() {
     modalText.textContent = "";
   };
 
-  // clique no botão "Ver mais"
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".testimonial-more");
     if (!btn) return;

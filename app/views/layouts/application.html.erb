@@ -8,64 +8,61 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
     <%= javascript_importmap_tags %>
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
 
-<body>
-  <nav class="navbar">
-  <div class="navbar-container navbar-center">
+  <body>
+    <nav class="navbar">
+      <div class="navbar-center">
+        <div class="navbar-container">
 
-    <!-- BOTÃO HAMBÚRGUER (mobile) -->
-    <button class="menu-toggle" aria-label="Abrir menu">
-      ☰
-    </button>
+          <!-- BOTÃO HAMBÚRGUER (mobile) -->
+          <button class="menu-toggle" type="button" aria-label="Abrir menu">
+            ☰
+          </button>
 
-    <!-- ESQUERDA -->
-    <ul class="navbar-links navbar-links-left">
-      <li><%= link_to "Início", root_path, class: nav_active_class(root_path) %></li>
-      <li><%= link_to "Sobre", sobre_path, class: nav_active_class(sobre_path) %></li>
-      <li><%= link_to "Planos", planos_path, class: nav_active_class(planos_path) %></li>
-      <li><%= link_to "Dúvidas", duvidas_path, class: nav_active_class(duvidas_path) %></li>
-    </ul>
+          <!-- ESQUERDA -->
+          <ul class="navbar-links navbar-links-left">
+            <li><%= link_to "Início", root_path, class: nav_active_class(root_path) %></li>
+            <li><%= link_to "Sobre", sobre_path, class: nav_active_class(sobre_path) %></li>
+            <li><%= link_to "Planos", planos_path, class: nav_active_class(planos_path) %></li>
+            <li><%= link_to "Dúvidas", duvidas_path, class: nav_active_class(duvidas_path) %></li>
+          </ul>
 
-    <!-- LOGO CENTRAL -->
-    <div class="navbar-logo">
-      <%= link_to root_path, class: "logo-link" do %>
-        <%= image_tag "logo3.png", alt: "Consultoria do Sono", class: "logo-img" %>
-      <% end %>
-    </div>
+          <!-- LOGO CENTRAL -->
+          <div class="navbar-logo">
+            <%= link_to root_path, class: "logo-link" do %>
+              <%= image_tag "logo3.png", alt: "Consultoria do Sono", class: "logo-img" %>
+            <% end %>
+          </div>
 
-    <!-- DIREITA -->
-    <ul class="navbar-links navbar-links-right">
-      <li><%= link_to "Depoimentos", depoimentos_path, class: nav_active_class(depoimentos_path) %></li>
-      <li><%= link_to "Contato", contato_path, class: nav_active_class(contato_path) %></li>
+          <!-- DIREITA -->
+          <ul class="navbar-links navbar-links-right">
+            <li><%= link_to "Depoimentos", depoimentos_path, class: nav_active_class(depoimentos_path) %></li>
+            <li><%= link_to "Contato", contato_path, class: nav_active_class(contato_path) %></li>
 
-      <!-- CTA -->
-      <li class="nav-cta-item">
-        <a
-          class="nav-cta"
-          href="https://wa.me/5531991941053?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20de%20Sono."
-          target="_blank"
-          rel="noopener"
-        >
-          Agendar
-        </a>
-      </li>
-    </ul>
+            <!-- CTA -->
+            <li class="nav-cta-item">
+              <a
+                class="nav-cta"
+                href="https://wa.me/5531991941053?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20de%20Sono."
+                target="_blank"
+                rel="noopener"
+              >
+                Agendar
+              </a>
+            </li>
+          </ul>
 
-  </div>
-</nav>
-
+        </div>
+      </div>
+    </nav>
 
     <%= yield %>
-
   </body>
 </html>

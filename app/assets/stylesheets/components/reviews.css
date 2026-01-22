@@ -89,8 +89,8 @@
   position: relative;
   z-index: 2;
 
-  padding: 0 !important;
-  margin: 0 !important;
+  padding-bottom: 34px;  /* espaço para sombra */
+  margin-bottom: -34px;  /* não muda layout externo */
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -252,8 +252,9 @@
   transition: transform .15s ease, box-shadow .15s ease;
 }
 
-.carousel-btn.prev{ left: -10px; }
-.carousel-btn.next{ right: -10px; }
+/* ⚠️ ajustado para o fullbleed */
+.carousel-btn.prev{ left: 10px; }
+.carousel-btn.next{ right: 10px; }
 
 .carousel-btn:hover{
   transform: translateY(-50%) scale(1.06);
@@ -454,6 +455,17 @@
 ============================== */
 
 @media (max-width: 900px) {
+  /* ✅ base mobile (full-bleed correto) */
+  .testimonials-wrap{
+    padding: 0 16px;
+  }
+
+  .testimonials-carousel--fullbleed{
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
   .carousel-btn {
     display: none;
   }
@@ -462,7 +474,9 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 10px 14px;
+
+    /* ✅ alinhamento com bordas no mobile */
+    padding: 10px 16px;
   }
 
   .testimonial-card{

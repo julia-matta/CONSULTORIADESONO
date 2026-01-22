@@ -13,3 +13,9 @@ import { initFAQ } from "pages/faq"
 document.addEventListener("turbo:load", () => {
   initFAQ()
 })
+
+import { initNavbar } from "./navbar";
+
+document.addEventListener("turbo:load", () => {
+  initNavbar();
+});
