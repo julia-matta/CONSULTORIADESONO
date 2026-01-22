@@ -21,12 +21,12 @@
       <div class="navbar-center">
         <div class="navbar-container">
 
-          <!-- BOTÃO HAMBÚRGUER (mobile) -->
+          <!-- ✅ BOTÃO HAMBÚRGUER (mobile) -->
           <button class="menu-toggle" type="button" aria-label="Abrir menu">
             ☰
           </button>
 
-          <!-- ESQUERDA -->
+          <!-- ✅ ESQUERDA (DESKTOP) -->
           <ul class="navbar-links navbar-links-left">
             <li><%= link_to "Início", root_path, class: nav_active_class(root_path) %></li>
             <li><%= link_to "Sobre", sobre_path, class: nav_active_class(sobre_path) %></li>
@@ -34,14 +34,14 @@
             <li><%= link_to "Dúvidas", duvidas_path, class: nav_active_class(duvidas_path) %></li>
           </ul>
 
-          <!-- LOGO CENTRAL -->
+          <!-- ✅ LOGO CENTRAL -->
           <div class="navbar-logo">
             <%= link_to root_path, class: "logo-link" do %>
               <%= image_tag "logo3.png", alt: "Consultoria do Sono", class: "logo-img" %>
             <% end %>
           </div>
 
-          <!-- DIREITA -->
+          <!-- ✅ DIREITA (DESKTOP) -->
           <ul class="navbar-links navbar-links-right">
             <li><%= link_to "Depoimentos", depoimentos_path, class: nav_active_class(depoimentos_path) %></li>
             <li><%= link_to "Contato", contato_path, class: nav_active_class(contato_path) %></li>
@@ -58,6 +58,38 @@
               </a>
             </li>
           </ul>
+
+          <!-- ✅ MENU MOBILE (1 container só)
+               Isso evita o bug de SOBREPOSIÇÃO:
+               no mobile você tem 2 UL (esq e dir) e antes elas ficavam fixed no mesmo lugar.
+               Agora quem vira fixed é ESTE container.
+          -->
+          <div class="navbar-mobile-menu" id="navbarMobileMenu">
+
+            <ul class="navbar-links navbar-links-left">
+              <li><%= link_to "Início", root_path, class: nav_active_class(root_path) %></li>
+              <li><%= link_to "Sobre", sobre_path, class: nav_active_class(sobre_path) %></li>
+              <li><%= link_to "Planos", planos_path, class: nav_active_class(planos_path) %></li>
+              <li><%= link_to "Dúvidas", duvidas_path, class: nav_active_class(duvidas_path) %></li>
+            </ul>
+
+            <ul class="navbar-links navbar-links-right">
+              <li><%= link_to "Depoimentos", depoimentos_path, class: nav_active_class(depoimentos_path) %></li>
+              <li><%= link_to "Contato", contato_path, class: nav_active_class(contato_path) %></li>
+
+              <li class="nav-cta-item">
+                <a
+                  class="nav-cta"
+                  href="https://wa.me/5531991941053?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20de%20Sono."
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Agendar
+                </a>
+              </li>
+            </ul>
+
+          </div>
 
         </div>
       </div>

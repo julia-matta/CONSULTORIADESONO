@@ -1,22 +1,47 @@
 export function initNavbar() {
   const toggle = document.querySelector(".menu-toggle");
-  const menus = document.querySelectorAll(".navbar-links");
+  const mobileMenu = document.getElementById("navbarMobileMenu");
 
-  if (!toggle || menus.length === 0) return;
+  if (!toggle || !mobileMenu) return;
 
-  // evita duplicar listeners com Turbo
+  // evita duplicar listener com Turbo
   if (toggle.dataset.navInit === "true") return;
   toggle.dataset.navInit = "true";
 
+  const closeMenu = () => {
+    mobileMenu.classList.remove("open");
+    toggle.textContent = "☰";
+    toggle.setAttribute("aria-expanded", "false");
+  };
+
+  const openMenu = () => {
+    mobileMenu.classList.add("open");
+    toggle.textContent = "×";
+    toggle.setAttribute("aria-expanded", "true");
+  };
+
+  // ✅ sempre iniciar fechado
+  closeMenu();
+
   toggle.addEventListener("click", () => {
-    menus.forEach((menu) => menu.classList.toggle("open"));
+    const isOpen = mobileMenu.classList.contains("open");
+    if (isOpen) closeMenu();
+    else openMenu();
   });
 
-  // fecha ao clicar em qualquer link
-  document.addEventListener("click", (e) => {
-    const link = e.target.closest(".navbar-links a");
-    if (!link) return;
+  // fecha ao clicar num link
+  mobileMenu.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (link) closeMenu();
+  });
 
-    menus.forEach((menu) => menu.classList.remove("open"));
+  // fecha com ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  // se virar desktop, fecha
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) closeMenu();
   });
 }
