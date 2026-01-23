@@ -150,11 +150,14 @@
 }
 
 .btn-faq {
-  display: inline-block;
-  font-size: 16px;
-  padding: 18px 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+  padding: 20px 52px; /* mais “cta” */
   border-radius: 50px;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .faq-side-note {
@@ -254,3 +257,34 @@
   }
 }
 
+/* ==============================
+   FIX MOBILE — botão final do FAQ não estoura
+============================== */
+
+.faq-final-btn{
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+@media (max-width: 900px){
+  .faq-final-btn{
+    display: inline-flex;          /* mantém visual e centraliza */
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    padding-left: 22px;            /* evita estouro */
+    padding-right: 22px;
+
+    white-space: normal;           /* se quebrar linha, não estoura */
+    text-align: center;
+  }
+
+  .faq-final-card{
+    box-sizing: border-box;
+    overflow: hidden;              /* proteção extra */
+  }
+}
